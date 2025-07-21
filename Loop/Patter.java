@@ -34,8 +34,6 @@ public class Patter {
                 letter++;
             }
         }
-
-        // Question 5
         
     }
 }
