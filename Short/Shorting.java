@@ -52,20 +52,51 @@ public class Shorting {
         }
     }
 
+    public static void CountingShort(int arr[]) {
+        int large = Integer.MIN_VALUE;
+        // calculate the repeat number of value
+        for (int i = 0; i < arr.length; i++) {//O(n)
+            large = Math.max(large, arr[i]);
+        }
+        int count[] = new int[large + 1];
+        // enter the all value inside the array
+        for (int i = 0; i < arr.length; i++) {//O(n)
+            count[arr[i]]++;
+        }
+        // swaping
+        int j = 0;
+        for (int i = 0; i < count.length; i++) {//O(n+k)
+            while (count[i] > 0) {
+                arr[j] = i;
+                j++;
+                count[i]--;
+            }
+        }
+    }
+
     public static void printArr(Integer num[]) {
         for (int i = 0; i < num.length; i++) {
             System.out.print(num[i] + " ");
         }
     }
 
+    public static void CountingPrint(int arr[]){
+        for(int i = 0;i<arr.length;i++){
+            System.out.print(arr[i] + " ");
+        }
+    }
+
     public static void main(String argu[]) {
         Scanner sc = new Scanner(System.in);
         Integer num[] = { 5,4,1,3,2 };
+        int arr[] = { 1, 4, 1, 3, 2, 4, 3, 7 };
         // BubbleShorting(num);
         // SelectionShorting(num);
         // InsertionShorting(num);
         // Arrays.sort(num);
-        Arrays.sort(num , Collections.reverseOrder());
-        printArr(num);
+        CountingShort(arr);
+        CountingPrint(arr);
+        // Arrays.sort(num , Collections.reverseOrder());
+        // printArr(num);
     }
 }
